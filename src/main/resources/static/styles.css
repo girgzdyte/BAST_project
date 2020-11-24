@@ -1,0 +1,109 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 40px 40px 40px 0px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.box {
+  border: 10px solid red;
+}
+
+.button {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+
+/* contact us */
+
+section {
+  height: 120vh;
+  width: 60%;
+  background-color: #E4FDFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-group {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  border: 1px solid black;
+  margin-top: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: .3s ease background-color;
+}
+
+button[type="submit"]:hover {
+  background-color: #F0FEFF;
+}
+
+#status {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+#status.success {
+  background-color: #F4FFAC;
+  animation: status 4s ease delay forwards;
+}
+
+#status.error {
+  background-color: #FA816B;
+  color: white;
+  animation: status 4s ease delay forwards;
+}
+
+@keyframes status {
+  0%{
+  opacity: 1;
+  pointer-events: all;
+  }
+  90%{
+    opacity: 1;
+    pointer-events: all;
+    }
+    100%{
+      opacity: 0;
+      pointer-events: none;
+      }
+}
+

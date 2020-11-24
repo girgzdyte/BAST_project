@@ -1,8 +1,6 @@
 package com.example.myFinalProject.services;
 
 import com.example.myFinalProject.model.OrderDetails;
-import com.example.myFinalProject.model.Orders;
-import com.example.myFinalProject.model.Product;
 import com.example.myFinalProject.repositories.OrderDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

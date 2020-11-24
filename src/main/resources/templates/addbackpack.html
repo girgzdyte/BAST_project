@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="/css/js/styles.css">
+</head>
+<body>
+<h1>Kuprines pridejimo langas, matomas tik man</h1>
+
+<div class="container my-5">
+    <h2 class="mb-5">Add Backpack</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/addbackpack/}" th:object="${backpack}" method="post"
+                  style="padding-left: 80px;">
+                <div>
+                    <div class="form-group" style="width: 200px;">
+                        <label for="title" class="col-form-label">Title:</label>
+                        <input type="text" th:field="*{title}" class="form-control" id="title">
+                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                              class="text-danger"></span>
+                    </div>
+                    <br>
+                    <div class="form-group" style="width: 200px;">
+                        <label for="color" class="col-form-label">Color:</label>
+                        <input type="text" th:field="*{color}" class="form-control" id="color">
+                        <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"
+                              class="text-danger"></span>
+                    </div>
+                    <br>
+                    <div class="form-group" style="width: 200px;">
+                        <label for="price" class="col-form-label">Price:</label><br>
+                        <input type="number" th:field="*{price}" class="form-control" id="price" min="1">
+                        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+                    </div>
+                    <br>
+                    <div class="form-group" style="width: 200px;">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <input type="text" th:field="*{description}" class="form-control" id="description">
+                        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                              class="text-danger"></span>
+                    </div>
+                    <br>
+                    <div class="form-group" style="width: 200px;">
+                        <label for="image" class="col-form-label">Image:</label>
+                        <input type="image" th:field="*{image}" class="form-control" id="image">
+                        <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"
+                              class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="width: 200px;">
+                        <label for="inStock" class="col-form-label">In Stock:</label>
+                        <input type="number" th:field="*{inStock}" class="form-control" id="inStock">
+                        <span th:if="${#fields.hasErrors('inStock')}" th:errors="*{inStock}"
+                              class="text-danger"></span>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-primary" value="Add Backpack">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@600&family=Syne:wght@400;600&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+    <style>
+      body {
+      background-color: #000;
+      background-image: url('bast.jpg');
+      background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      background-repeat:no-repeat;
+      background-size:cover;
+      color: #C2B395;
+      }
+      a {
+      list-style: none;
+      margin: 10px;
+      display: inline-grid;
+      color: #58453d;
+      transition: 0.5s;
+      text-decoration: none;
+      }
+
+      a:hover {
+      color: #bd8262;
+      transition: .2s;
+      }
+     </style>
+
+    <title>cart</title>
+</head>
+<body>
+
+<nav class="navbar navbar" style="font-family: 'Kufam', cursive;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">BAST</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/backpacks">Backpacks</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li><a href="/cart">Cart</a></li>
+        </ul>
+    </div>
+</nav>
+   <h1>Prekių užsakymo langas žmogui</h1>
+   <p>Šis langas turi atsidaryti, paspaudus "Cart", žmogus užpildo savo duomenis.
+       Čia taip pat bus prekės, kuris žmogus bus įsimetęs iš anksto, spaudęs ant "Add" mygtuko "Backpacks" lange</p>
+   <form action="#" th:action="@{/createcart}" th:object="${cart}" method="post">
+       <table border="0" cellpadding="10">
+           <tr>
+               <td>Full name:</td>
+               <td><input type="text" th:field="*{fullName}" /></td>
+           </tr>
+           <tr>
+               <td>Home address:</td>
+               <td><input type="text" th:field="*{shippingAddress}" /></td>
+           </tr>
+           <tr>
+               <td>Country:</td>
+               <td><input type="text" th:field="*{country}" /></td>
+           </tr>
+           <tr>
+               <td>Phone number:</td>
+               <td><input type="text" th:field="*{phoneNumber}" /></td>
+           </tr>
+           <tr>
+               <td>Email address:</td>
+               <td><input type="text" th:field="*{emailAddress}" /></td>
+           </tr>
+           <tr>
+               <td><button type="submit" class="btn btn-primary">Order</button> </td>
+           </tr>
+       </table>
+   </form>
+
+
+<!--
+   <form action ="#" th:action="@{/createorder}" th:object="${cart}" method="post" style="padding-left: 80px;">
+       <div>
+           <div class="form-group" style="width: 200px;">
+               <label for="fullName" class="col-form-label">Pilnas vardas:</label>
+               <input type="text" th:field="*{fullName}" class="form-control" id="fullName">
+           </div>
+           <br>
+           <div class="form-group" style="width: 200px;">
+               <label for="shippingAddress" class="col-form-label">Adresas:</label>
+               <input type="text" th:field="*{shippingAddress}" class="form-control" id="shippingAddress">
+           </div>
+           <br>
+           <div class="form-group" style="width: 200px;">
+               <label for="country" class="col-form-label" >Šalis:</label><br>
+               <input type="text" th:field="*{country}" class="form-control" id="country">
+           </div>
+           <br>
+           <div class="form-group" style="width: 200px;">
+               <label for="phoneNumber" class="col-form-label">Telefono numeris:</label>
+               <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber">
+           </div>
+           <br>
+           <div class="form-group" style="width: 200px;">
+               <label for="emailAddress" class="col-form-label">El. paštas:</label>
+               <input type="text" th:field="*{emailAddress}" class="form-control" id="emailAddress">
+           </div>
+           <br>
+       </div>
+       <br>
+       <div>
+           <div class="col-md-6 mt-5">
+               <input type="submit" class="btn btn-primary" value="Užsakyti">
+           </div>
+       </div>
+   </form>
+-->
+</body>
+</html>

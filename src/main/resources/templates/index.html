@@ -1,13 +1,20 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Main page</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@600&family=Syne:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/js/styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@600&family=Syne:wght@400;600&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+    <link href="https://fontawesome.com/v4.7.0/icons/" rel="stylesheet">
+
     <style>
       body {
       background-color: #000;
@@ -18,31 +25,234 @@
       background-size:cover;
       }
 
-     </style>
+      h2 {
+      padding: 70px 0px 0px 180px;
+      font-family: 'Kufam', cursive;
+      font-size: 50px;
+      color: #d19a7c;
+      }
+
+      h3 {
+      padding: 20px 0px 0px 130px;
+      font-family: 'Kufam', cursive;
+      color: #58453d;
+      }
+
+ /* iconu pozicija */
+      .icons {
+      position: absolute;
+      bottom: 30px;
+      left: 20px;
+      font-size: 22px;
+      }
+
+      .cursor {
+      cursor: pointer;
+      }
+
+ /* pelytes efektai */
+      .hoverBorder {
+      font-family: inherit;
+      text-decoration: none;
+      color: white;
+      }
+
+      .hoverBorder::after {
+      content: '';
+      width: 0%;
+      height: 2px;
+      background-color: #373127;
+      position: absolute;
+      top: 0%; left: 100%;
+      border-radius: 10px;
+      transition: all 500ms ease;
+      }
+
+      .hoverBorder:hover::after {
+      left: 0%;
+      width: 100%;
+      }
+
+      a {
+      list-style: none;
+      margin: 10px;
+      display: inline-grid;
+      color: #58453d;
+      transition: 0.5s;
+      text-decoration: none;
+      }
+
+      a:hover {
+      color: #bd8262;
+      transition: .2s;
+      }
+
+      .button {
+      margin: 50px 0px 0px 320px;
+      font-family: 'Kufam', cursive;
+      border: none;
+      background: #090906;
+      color: #cec1b3 !important;
+      font-weight: 100;
+      padding: 20px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      display: inline-block;
+      transition: all 0.3s ease 0s;
+      }
+
+      .one_line {
+    margin: 0px 30px 30px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.border {
+    content: " ";
+    border-bottom: solid;
+    margin: 40px;
+    border-width: 2px;
+    border-color: #AFA496;
+    text-align: left;
+    caret-color: white;
+}
+
+.wrapper {
+
+margin: 40px 200px 60px 200px;
+box-shadow: 0px 0px 20px black;
+}
+
+.wrapper .input_field {
+    padding: 10px 60px 20px 0px;
+    margin-bottom: 10px;
+}
+
+.wrapper .input_field input[type="text"],
+textarea {
+    width: 80%;
+    border: none;
+    padding: 10px;
+    background-color: transparent;
+}
+
+.wrapper textarea {
+    height: 80px;
+    resize: none;
+}
+
+.wrapper .button input[type="submit"] {
+    border: 1;
+    border-color: #47C3B2;
+    border-radius: 5px;
+    font-family: syne;
+    color: #AFA496;
+    font-size: 150%;
+    margin: 30px 0px 100px 40px;
+    padding: 10px 0px 10px 0px;
+    width: 17%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.wrapper #error_message {
+    margin-bottom: 20px;
+    padding: 0px;
+    background-color: antiquewhite;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+
+#name, #email, #subject, #message {
+    font-size: 16px;
+}
+
+/* kad nebutu focused border */
+*:focus {
+    outline: none;
+}
+
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar" style="font-family: 'Kufam', cursive;">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">BAST</a>
+            <a class="navbar-brand" href="/">BAST</a>
         </div>
         <ul class="nav navbar-nav">
             <li><a href="/backpacks">Backpacks</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="/neworder">Cart</a></li>
+            <li><a id="myBtn">Contact Us</a></li>
+            <li><a href="/cart">Cart</a></li>
         </ul>
     </div>
 </nav>
 
-<div class="container box">
-    <h1>BAST</h1>
-    <h2>Hello, this is BAST.
-        Take a look.</h2>
+<!-- CONTACT US POP UP -->
+<div id="myModal" class="modal wrapper">
+    <div id="error_message" class="modal-content">
+        <!-- <form action="https://formspree.io/f/xgepzdje" method="post" id="my-form"> end point from formspree.io -->
+        <span class="close">&times;</span>
+        <form th:action="@{/contactus}" th:object="${contactus}" method="post" onsubmit="return validation()">
+            <div class="one_line">
+            <div class="form-group input_field border">
+                <label for="firstName">First name</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+
+            <div class="form-group input_field border">
+                <label for="lastName">Last name</label>
+                <input type="text" id="lastName" name="lastName">
+            </div>
+            </div>
+            <div class="form-group input_field border">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group input_field border">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" cols="30" rows="5"></textarea>
+            </div>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
 </div>
 
+
+<div class="padding">
+    <h2>Hello, this is BAST.</h2>
+    <h3>We create backpacks from re-purposed leather.</h3>
+    <a th:href="@{/backpacks}" class="button btn btn-primary mt-">View backpacks</a>
+</div>
+
+<div class="icons hoverBorder">
+    <a href="https://www.facebook.com/bastbags" target="_blank" class="fa fa-facebook cursor"></a>
+    <a href="https://www.instagram.com/bastbags/" target="_blank" class="fa fa-instagram cursor"></a>
+</div>
+
+<script>
+		var modal = document.getElementById('myModal');
+		var btn = document.getElementById("myBtn");
+		var span = document.getElementsByClassName("close")[0];
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+</script>
+<script src="/contactus.js"></script>
 </body>
 </html>
